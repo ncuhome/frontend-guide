@@ -7,9 +7,9 @@ actionText: Get Started →
 actionLink: /guide/
 features:
 - title: Best principle
-  details: Stick to guideline. Code styles should be the same no matter how large your crew is.
+  details: Stick to the guideline. Code styles should be the same no matter how large your crew is.
 - title: Practicality first
-  details: You 
+  details: Don't chase for perfection. Practicality is the priority.
 - title: lint tools backed up
   details: Corresponding lint configuration backs you up.
 footer: MIT Licensed | Copyright © 2019-present NCUHOME

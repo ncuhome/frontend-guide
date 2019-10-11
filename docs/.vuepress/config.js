@@ -5,13 +5,13 @@ module.exports = {
   //   ['link', { rel: 'icon', href: '/logo.png' }]
   // ],
   locales: {
-    // 键名是该语言所属的子路径
-    // 作为特例，默认语言可以使用 '/' 作为其路径。
     '/': {
-      lang: 'English' // 将会被设置为 <html> 的 lang 属性
+      lang: 'en-US',
+      title: 'NCUHOME FE Guide',
     },
     '/zh/': {
-      lang: '简体中文'
+      lang: 'zh-CN',
+      title: 'NCUHOME 前端指南'
     }
   },
   themeConfig: {
@@ -20,26 +20,40 @@ module.exports = {
       { text: 'Guide', link: '/guide/' },
       { text: '关于我们', link: 'https://team.ncuos.com' },
     ],
-    sidebar: [
-      {
-        title: 'Style Guide',   // 必要的
-        path: '/guide/',      // 可选的, 应该是一个绝对路径
-        collapsable: false, // 可选的, 默认值是 true,
-        sidebarDepth: 1,    // 可选的, 默认值是 1
-        // children: [
-        //   '/guide/naming/',
-        //   '/guide/html/'
-        // ]
+    
+    locales: {
+      '/': {
+        label: 'English',
+        ariaLabel: 'Languages',
+        editLinkText: 'Edit this page on GitHub',
+        nav: [
+          { text: 'Home', link: '/' },
+          { text: 'Guide', link: '/guide/' },
+          { text: 'About us', link: 'https://team.ncuos.com' },
+        ],
+        sidebar: ['/guide/']
+      },
+      '/zh/': {
+        label: '简体中文',
+        selectText: '选择语言',
+        editLinkText: '在 GitHub 上编辑此页',
+        nav: [
+          { text: '首页', link: '/' },
+          { text: '指南', link: '/zh/guide/' },
+          { text: '关于我们', link: 'https://team.ncuos.com' },
+        ],
+        sidebar: ['/zh/guide/']
       }
-    ],
+    }
+
+    ,
     lastUpdated: 'Last Updated',
     repo: 'Wzb3422/Ncuhome-fe-style-guide',
-    repoLabel: '查看源码',
+    repoLabel: 'GitHub repo',
     docsRepo: 'Wzb3422/Ncuhome-fe-style-guide',
     docsDir: 'docs',
     docsBranch: 'master',
     editLinks: true,
-    editLinkText: '帮助我们改善此页面！',
     smoothScroll: true
   }
 }
