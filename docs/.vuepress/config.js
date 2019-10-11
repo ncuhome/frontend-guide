@@ -31,10 +31,14 @@ module.exports = {
           { text: 'Guide', link: '/guide/' },
           { text: 'About us', link: 'https://team.ncuos.com' },
         ],
-        sidebar: ['/guide/']
+        sidebar: [{
+          path: '/guide/',
+          title: 'JavaScript'
+        }]
       },
       '/zh/': {
         label: '简体中文',
+        ariaLabel: '选择语言',
         selectText: '选择语言',
         editLinkText: '在 GitHub 上编辑此页',
         nav: [
@@ -42,11 +46,13 @@ module.exports = {
           { text: '指南', link: '/zh/guide/' },
           { text: '关于我们', link: 'https://team.ncuos.com' },
         ],
-        sidebar: ['/zh/guide/']
+        sidebar: [{
+          path: '/zh/guide/',
+          title: 'JavaScript'
+        }]
       }
-    }
-
-    ,
+    },
+    plugins: ['@vuepress/back-to-top'],
     lastUpdated: 'Last Updated',
     repo: 'Wzb3422/Ncuhome-fe-style-guide',
     repoLabel: 'GitHub repo',

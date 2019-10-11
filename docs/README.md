@@ -10,7 +10,7 @@ features:
   details: Stick to the guideline. Code styles should be the same no matter how large your crew is.
 - title: Practicality first
   details: Don't chase for perfection. Practicality is the priority.
-- title: lint tools backed up
+- title: Lint tools backed up
   details: Corresponding lint configuration backs you up.
 footer: MIT Licensed | Copyright © 2019-present NCUHOME
 ---

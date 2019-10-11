@@ -20,5 +20,8 @@
   "homepage": "https://github.com/Wzb3422/Ncuhome-fe-style-guide#readme",
   "dependencies": {
     "vuepress": "^1.1.0"
+  },
+  "devDependencies": {
+    "@vuepress/plugin-back-to-top": "^1.0.0-rc.1"
   }
 }

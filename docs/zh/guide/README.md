@@ -1,70 +1,17 @@
-# Airbnb JavaScript 风格指南
+---
+sidebarDepth: 2
+---
 
-*JavaScript最合理的方法 A mostly reasonable approach to JavaScript*
+# NCUHOME JavaScript 代码风格指南
 
-> **注意**: 这个指南假定你正在使用[Babel](https://babeljs.io)， 并且需要你使用或等效的使用[babel-preset-airbnb](https://npmjs.com/babel-preset-airbnb)。 同时假定你在你的应用里安装了带有或等效的[airbnb-browser-shims](https://npmjs.com/airbnb-browser-shims)的
-`shims/polyfills`
+*编写易理解、易交接、高可维护的代码。*
 
-[![Downloads](https://img.shields.io/npm/dm/eslint-config-airbnb.svg)](https://www.npmjs.com/package/eslint-config-airbnb)
-[![Downloads](https://img.shields.io/npm/dm/eslint-config-airbnb-base.svg)](https://www.npmjs.com/package/eslint-config-airbnb-base)
-[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/airbnb/javascript?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-
-这个指南支持的其他语言翻译版请看 [Translation](#translation)
-
-Other Style Guides
- - [ES5 (已废弃)](https://github.com/airbnb/javascript/tree/es5-deprecated/es5)
- - [React](react/)
- - [CSS-in-JavaScript](css-in-javascript/)
- - [CSS & Sass](https://github.com/airbnb/css)
- - [Ruby](https://github.com/airbnb/ruby)
-
-## 目录
-
-  1. [Types](#types)
-  1. [References](#references)
-  1. [Objects](#objects)
-  1. [Arrays](#arrays)
-  1. [Destructuring](#destructuring)
-  1. [Strings](#strings)
-  1. [Functions](#functions)
-  1. [Arrow Functions](#arrow-functions)
-  1. [Classes & Constructors](#classes--constructors)
-  1. [Modules](#modules)
-  1. [Iterators and Generators](#iterators-and-generators)
-  1. [Properties](#properties)
-  1. [Variables](#variables)
-  1. [Hoisting](#hoisting)
-  1. [Comparison Operators & Equality](#comparison-operators--equality)
-  1. [Blocks](#blocks)
-  1. [Control Statements](#control-statements)
-  1. [Comments](#comments)
-  1. [Whitespace](#whitespace)
-  1. [Commas](#commas)
-  1. [Semicolons](#semicolons)
-  1. [Type Casting & Coercion](#type-casting--coercion)
-  1. [Naming Conventions](#naming-conventions)
-  1. [Accessors](#accessors)
-  1. [Events](#events)
-  1. [jQuery](#jquery)
-  1. [ECMAScript 5 Compatibility](#ecmascript-5-compatibility)
-  1. [ECMAScript 6+ (ES 2015+) Styles](#ecmascript-6-es-2015-styles)
-  1. [Standard Library](#standard-library)
-  1. [Testing](#testing)
-  1. [Performance](#performance)
-  1. [Resources](#resources)
-  1. [In the Wild](#in-the-wild)
-  1. [Translation](#translation)
-  1. [The JavaScript Style Guide Guide](#the-javascript-style-guide-guide)
-  1. [Chat With Us About JavaScript](#chat-with-us-about-javascript)
-  1. [Contributors](#contributors)
-  1. [License](#license)
-  1. [Amendments](#amendments)
-
-## Types
+## 类型
 
   <a name="1.1"></a>
   <a name="types--primitives"></a>
   - [1.1](#types--primitives) 基本类型: 你可以直接获取到基本类型的值
+
     + `string`
     + `number`
     + `boolean`
@@ -80,11 +27,12 @@ Other Style Guides
 
     console.log(foo, bar); // => 1, 9
     ```
-    + Symbols 不能被正确的polyfill。 所以在不能原生支持symbol类型的环境[浏览器]中，不应该使用 symbol 类型。
+    + symbol 不能被正确的 polyfill。 所以在不能原生支持 symbol 类型的环境`浏览器`中，不应该使用 symbol 类型。
 
   <a name="1.2"></a>
   <a name="types--complex"></a>
-  - [1.2](#types--complex)  复杂类型: 复杂类型赋值是获取到他的引用的值。 相当于传引用
+  - [1.2](#types--complex)  复杂类型: 复杂类型储存的是它的引用。
+
     + `object`
     + `array`
     + `function`
@@ -98,15 +46,15 @@ Other Style Guides
     console.log(foo[0], bar[0]); // => 9, 9
     ```
 
-**[⬆ back to top](#目录)**
+## 变量声明
 
-## References
+  我们停止使用 `var` 来声明变量。 
 
   <a name="2.1"></a>
   <a name="references--prefer-const"></a>
-  - [2.1](#references--prefer-const) 所有的赋值都用`const`，避免使用`var`. eslint: [`prefer-const`](http://eslint.org/docs/rules/prefer-const.html), [`no-const-assign`](http://eslint.org/docs/rules/no-const-assign.html)
+  - [2.1](#references--prefer-const) 不变的常量，使用 `const` 来声明。
 
-    > Why? 因为这个确保你不会改变你的初始值，重复引用会导致bug和代码难以理解
+    > Why? 因为这个确保你不能改变它的初始值。
 
     ```javascript
     // bad
@@ -120,9 +68,9 @@ Other Style Guides
 
   <a name="2.2"></a>
   <a name="references--disallow-var"></a>
-  - [2.2](#references--disallow-var) 如果你一定要对参数重新赋值，那就用`let`，而不是`var`. eslint: [`no-var`](http://eslint.org/docs/rules/no-var.html)
+  - [2.2](#references--disallow-var) 使用 `let` 进行变量声明。
 
-    > Why? 因为`let`是块级作用域，而`var`是函数级作用域
+    > Why? 因为 `let` 是块级作用域，而 `var` 是函数级作用域。
 
     ```javascript
     // bad
@@ -140,10 +88,10 @@ Other Style Guides
 
   <a name="2.3"></a>
   <a name="references--block-scope"></a>
-  - [2.3](#references--block-scope) 注意： `let`、`const`都是块级作用域
+  - [2.3](#references--block-scope) 注意： `let` `const`都是块级作用域
 
     ```javascript
-    // const 和 let 都只存在于它定义的那个块级作用域
+    // const 和 let 都只存在于它定义的块级作用域
     {
       let a = 1;
       const b = 1;
@@ -152,13 +100,11 @@ Other Style Guides
     console.log(b); // ReferenceError
     ```
 
-**[⬆ back to top](#目录)**
-
 ## Objects
 
   <a name="3.1"></a>
   <a name="objects--no-new"></a>
-  - [3.1](#objects--no-new) 使用字面值创建对象. eslint: [`no-new-object`](http://eslint.org/docs/rules/no-new-object.html)
+  - [3.1](#objects--no-new) 使用字面量创建对象.
 
     ```javascript
     // bad
@@ -170,7 +116,7 @@ Other Style Guides
 
   <a name="3.2"></a>
   <a name="es6-computed-properties"></a>
-  - [3.2](#es6-computed-properties) 当创建一个带有动态属性名的对象时，用计算后属性名
+  - [3.2](#es6-computed-properties) 当创建一个带有动态属性名的对象时，使用计算后属性名。
 
     > Why? 这可以使你将定义的所有属性放在对象的一个地方.
 
@@ -197,7 +143,7 @@ Other Style Guides
 
   <a name="3.3"></a>
   <a name="es6-object-shorthand"></a>
-  - [3.3](#es6-object-shorthand) 用对象方法简写. eslint: [`object-shorthand`](http://eslint.org/docs/rules/object-shorthand.html)
+  - [3.3](#es6-object-shorthand) 用对象方法简写.
 
     ```javascript
     // bad
@@ -222,9 +168,9 @@ Other Style Guides
 
   <a name="3.4"></a>
   <a name="es6-object-concise"></a>
-  - [3.4](#es6-object-concise) 用属性值缩写. eslint: [`object-shorthand`](http://eslint.org/docs/rules/object-shorthand.html)
+  - [3.4](#es6-object-concise) 用属性值缩写.
 
-    > Why? 这样写的更少且更可读
+    > Why? 这样写的更简单且更易读
 
     ```javascript
     const lukeSkywalker = 'Luke Skywalker';
@@ -242,7 +188,7 @@ Other Style Guides
 
   <a name="3.5"></a>
   <a name="objects--grouped-shorthand"></a>
-  - [3.5](#objects--grouped-shorthand) 将你的所有缩写放在对象声明的开始.
+  - [3.5](#objects--grouped-shorthand) 将缩写的属性放在前面。
 
     > Why? 这样也是为了更方便的知道有哪些属性用了缩写.
 
@@ -273,9 +219,9 @@ Other Style Guides
 
   <a name="3.6"></a>
   <a name="objects--quoted-props"></a>
-  - [3.6](#objects--quoted-props) 只对那些无效的标示使用引号 `''`. eslint: [`quote-props`](http://eslint.org/docs/rules/quote-props.html)
+  - [3.6](#objects--quoted-props) 只对那些无效的属性名使用引号 `''`.
 
-    > Why? 通常我们认为这种方式主观上易读。他优化了代码高亮，并且页更容易被许多JS引擎压缩。
+    > Why? 通常我们认为这种方式主观上更加易读。它优化了代码高亮，并且许多 JS 引擎对此有优化。
 
     ```javascript
     // bad
@@ -295,9 +241,9 @@ Other Style Guides
 
   <a name="3.7"></a>
   <a name="objects--prototype-builtins"></a>
-  - [3.7](#objects--prototype-builtins) 不要直接调用`Object.prototype`上的方法，如`hasOwnProperty`, `propertyIsEnumerable`, `isPrototypeOf`。
+  - [3.7](#objects--prototype-builtins) 不要直接调用 `Object.prototype` 上的方法，如 `hasOwnProperty` `propertyIsEnumerable` `isPrototypeOf`。
 
-    > Why? 在一些有问题的对象上， 这些方法可能会被屏蔽掉 - 如：`{ hasOwnProperty: false }` - 或这是一个空对象`Object.create(null)`
+    > Why? 在一些属性名被重写了的对象上， 这些方法可能会被屏蔽掉 - 如：`{ hasOwnProperty: false }` - 或这是一个 `null` `Object.create(null)`
 
     ```javascript
     // bad
@@ -307,7 +253,7 @@ Other Style Guides
     console.log(Object.prototype.hasOwnProperty.call(object, key));
 
     // best
-    const has = Object.prototype.hasOwnProperty; // 在模块作用内做一次缓存
+    const has = Object.prototype.hasOwnProperty; // 在模块作用域内做了一次缓存
     /* or */
     import has from 'has'; // https://www.npmjs.com/package/has
     // ...
@@ -316,8 +262,7 @@ Other Style Guides
 
   <a name="3.8"></a>
   <a name="objects--rest-spread"></a>
-  - [3.8](#objects--rest-spread) 对象浅拷贝时，更推荐使用扩展运算符[就是`...`运算符]，而不是[`Object.assign`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)。获取对象指定的几个属性时，用对象的rest解构运算符[也是`...`运算符]更好。
-    + 这一段不太好翻译出来， 大家看下面的例子就懂了。^.^
+  - [3.8](#objects--rest-spread) 进行对象合并时，推荐使用扩展运算符 `...` ，而不是[`Object#assign`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)。
 
   ```javascript
   // very bad
@@ -329,22 +274,18 @@ Other Style Guides
   const original = { a: 1, b: 2 };
   const copy = Object.assign({}, original, { c: 3 }); // copy => { a: 1, b: 2, c: 3 }
 
-  // good es6扩展运算符 ...
+  // good
   const original = { a: 1, b: 2 };
-  // 浅拷贝
   const copy = { ...original, c: 3 }; // copy => { a: 1, b: 2, c: 3 }
 
-  // rest 赋值运算符
   const { a, ...noA } = copy; // noA => { b: 2, c: 3 }
   ```
-
-**[⬆ back to top](#目录)**
 
 ## Arrays
 
   <a name="4.1"></a>
   <a name="arrays--literals"></a>
-  - [4.1](#arrays--literals) 用字面量赋值。 eslint: [`no-array-constructor`](http://eslint.org/docs/rules/no-array-constructor.html)
+  - [4.1](#arrays--literals) 使用字面量创建数组。
 
     ```javascript
     // bad
@@ -356,7 +297,7 @@ Other Style Guides
 
   <a name="4.2"></a>
   <a name="arrays--push"></a>
-  - [4.2](#arrays--push) 用[Array#push](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/push) 代替直接向数组中添加一个值。
+  - [4.2](#arrays--push) 用[Array#push](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/push) 在数组末尾添加元素，而不是直接通过索引赋值。
 
     ```javascript
     const someStack = [];
@@ -370,7 +311,7 @@ Other Style Guides
 
   <a name="4.3"></a>
   <a name="es6-array-spreads"></a>
-  - [4.3](#es6-array-spreads) 用扩展运算符做数组浅拷贝，类似上面的对象浅拷贝
+  - [4.3](#es6-array-spreads) 用扩展运算符做数组浅拷贝。
 
     ```javascript
     // bad
@@ -388,7 +329,7 @@ Other Style Guides
 
   <a name="4.4"></a>
   <a name="arrays--from-iterable"></a>
-  - [4.4](#arrays--from-iterable) 用 `...` 运算符而不是[`Array.from`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from)来将一个可迭代的对象转换成数组。
+  - [4.4](#arrays--from-iterable) 用 `...` 运算符而不是 [`Array#from`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from) 来将一个可迭代的对象转换成数组。
 
     ```javascript
     const foo = document.querySelectorAll('.foo');
@@ -402,7 +343,7 @@ Other Style Guides
 
   <a name="4.5"></a>
   <a name="arrays--from-array-like"></a>
-  - [4.5](#arrays--from-array-like) 用 [`Array.from`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from) 去将一个类数组对象转成一个数组。
+  - [4.5](#arrays--from-array-like) 用 [`Array#from`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from) 从一个类数组对象生成一个数组。
 
     ```javascript
     const arrLike = { 0: 'foo', 1: 'bar', 2: 'baz', length: 3 };
