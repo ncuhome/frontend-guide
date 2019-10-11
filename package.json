@@ -1,0 +1,24 @@
+{
+  "name": "Ncuhome-fe-style-guide",
+  "version": "1.0.0",
+  "description": "A Front End style guide for my dear NCUHOME",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wzb3422/Ncuhome-fe-style-guide.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Wzb3422/Ncuhome-fe-style-guide/issues"
+  },
+  "homepage": "https://github.com/Wzb3422/Ncuhome-fe-style-guide#readme",
+  "dependencies": {
+    "vuepress": "^1.1.0"
+  }
+}
