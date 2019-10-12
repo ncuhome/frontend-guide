@@ -1,6 +1,6 @@
 # NCUHOME Front End Style Guide
 
-Style guide for ncuhomers. Heavily inspired by []()
+Style guide for ncuhomers. Heavily inspired by [eslint-config-alloy](https://github.com/AlloyTeam/eslint-config-alloy)
 
 ## Get Started
 
