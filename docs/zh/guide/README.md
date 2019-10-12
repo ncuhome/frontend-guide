@@ -4,20 +4,18 @@ sidebarDepth: 2
 
 # NCUHOME JavaScript 代码风格指南
 
-*编写易理解、易交接、高可维护的代码。*
+*编写易理解、易交接、高可维护的代码。* :rocket:
 
 ## 类型
 
-  <a name="1.1"></a>
-  <a name="types--primitives"></a>
-  - [1.1](#types--primitives) 基本类型: 你可以直接获取到基本类型的值
+  - 1.1 **基本类型**: 你可以直接获取到基本类型的值
 
-    + `string`
-    + `number`
-    + `boolean`
-    + `null`
-    + `undefined`
-    + `symbol`
+    - `string`
+    - `number`
+    - `boolean`
+    - `null`
+    - `undefined`
+    - `symbol`
 
     ```javascript
     const foo = 1;
@@ -27,11 +25,9 @@ sidebarDepth: 2
 
     console.log(foo, bar); // => 1, 9
     ```
-    + symbol 不能被正确的 polyfill。 所以在不能原生支持 symbol 类型的环境`浏览器`中，不应该使用 symbol 类型。
+    + `symbol` 不能被正确的 `polyfill`。 所以在不能原生支持 symbol 类型的环境`浏览器`中，不应该使用 `symbol` 类型。
 
-  <a name="1.2"></a>
-  <a name="types--complex"></a>
-  - [1.2](#types--complex)  复杂类型: 复杂类型储存的是它的引用。
+  - [1.2](#types--complex)  **复杂类型**: 复杂类型储存的是变量的引用。
 
     + `object`
     + `array`
@@ -50,11 +46,9 @@ sidebarDepth: 2
 
   我们停止使用 `var` 来声明变量。 
 
-  <a name="2.1"></a>
-  <a name="references--prefer-const"></a>
-  - [2.1](#references--prefer-const) 不变的常量，使用 `const` 来声明。
+  - 2.1不变的常量，使用 `const` 来声明。
 
-    > Why? 因为这个确保你不能改变它的初始值。
+    > Why? 因为这能确保你不能改变它的初始值，并且使代码可读性更高。
 
     ```javascript
     // bad
@@ -66,11 +60,9 @@ sidebarDepth: 2
     const b = 2;
     ```
 
-  <a name="2.2"></a>
-  <a name="references--disallow-var"></a>
-  - [2.2](#references--disallow-var) 使用 `let` 进行变量声明。
+  - 2.2 使用 `let` 进行变量声明。
 
-    > Why? 因为 `let` 是块级作用域，而 `var` 是函数级作用域。
+    > Why? 因为 `let` 是块级作用域的，而 `var` 是函数级作用域的。
 
     ```javascript
     // bad
@@ -86,12 +78,10 @@ sidebarDepth: 2
     }
     ```
 
-  <a name="2.3"></a>
-  <a name="references--block-scope"></a>
-  - [2.3](#references--block-scope) 注意： `let` `const`都是块级作用域
+  - 2.3 注意： `let` `const`都是块级作用域
 
     ```javascript
-    // const 和 let 都只存在于它定义的块级作用域
+    // const 和 let 都只存在于它定义时的块级作用域
     {
       let a = 1;
       const b = 1;
@@ -100,11 +90,9 @@ sidebarDepth: 2
     console.log(b); // ReferenceError
     ```
 
-## Objects
+## 对象
 
-  <a name="3.1"></a>
-  <a name="objects--no-new"></a>
-  - [3.1](#objects--no-new) 使用字面量创建对象.
+  - 3.1 使用字面量创建对象.
 
     ```javascript
     // bad
@@ -114,9 +102,7 @@ sidebarDepth: 2
     const item = {};
     ```
 
-  <a name="3.2"></a>
-  <a name="es6-computed-properties"></a>
-  - [3.2](#es6-computed-properties) 当创建一个带有动态属性名的对象时，使用计算后属性名。
+  - 3.2 当创建一个带有动态属性名的对象时，使用计算后属性名。
 
     > Why? 这可以使你将定义的所有属性放在对象的一个地方.
 
@@ -141,9 +127,7 @@ sidebarDepth: 2
     };
     ```
 
-  <a name="3.3"></a>
-  <a name="es6-object-shorthand"></a>
-  - [3.3](#es6-object-shorthand) 用对象方法简写.
+  - 3.3 用对象方法简写。
 
     ```javascript
     // bad
@@ -159,16 +143,13 @@ sidebarDepth: 2
     const atom = {
       value: 1,
 
-      // 对象的方法
       addValue(value) {
         return atom.value + value;
       },
     };
     ```
 
-  <a name="3.4"></a>
-  <a name="es6-object-concise"></a>
-  - [3.4](#es6-object-concise) 用属性值缩写.
+  - 3.4 用属性值缩写.
 
     > Why? 这样写的更简单且更易读
 
@@ -186,11 +167,9 @@ sidebarDepth: 2
     };
     ```
 
-  <a name="3.5"></a>
-  <a name="objects--grouped-shorthand"></a>
-  - [3.5](#objects--grouped-shorthand) 将缩写的属性放在前面。
+  - 3.5 将缩写的属性放在前面。
 
-    > Why? 这样也是为了更方便的知道有哪些属性用了缩写.
+    > Why? 这样是为了更方便的知道有哪些属性使用了缩写.
 
     ```javascript
     const anakinSkywalker = 'Anakin Skywalker';

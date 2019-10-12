@@ -4,12 +4,11 @@ sidebarDepth: 2
 
 # NCUHOME JavaScript Style Guide
 
-* Write maintainable code that other team members can easily understand, adapt, and extend.*
+*Write maintainable code that other team members can easily understand, adapt, and extend.* :rocket:
 
 ## Types
 
-  <a name="types--primitives"></a><a name="1.1"></a>
-  - [1.1](#types--primitives) **Primitives**: When you access a primitive type you work directly on its value.
+  - 1.1 **Primitives**: When you access a primitive type you work directly on its value.
 
     - `string`
     - `number`
@@ -27,10 +26,9 @@ sidebarDepth: 2
     console.log(foo, bar); // => 1, 9
     ```
 
-    - Symbols cannot be faithfully polyfilled, so they should not be used when targeting browsers/environments that don’t support them natively.
+    - `symbol` cannot be faithfully `polyfilled`, so they should not be used when targeting browsers/environments that don’t support them natively.
 
-  <a name="types--complex"></a><a name="1.2"></a>
-  - [1.2](#types--complex)  **Complex**: When you access a complex type you work on a reference to its value.
+  - 1.2 **Complex**: When you access a complex type you work on a reference to its value.
 
     - `object`
     - `array`
@@ -49,8 +47,7 @@ sidebarDepth: 2
 
   `var` is deprecated.Instead of using it, see below. 
 
-  <a name="references--prefer-const"></a><a name="2.1"></a>
-  - [2.1](#references--prefer-const) Use `const` for all of your variables that won't be changed;
+  - 2.1 Use `const` for all of your variables that won't be changed;
 
     > Why? This ensures that you can’t reassign your references, which can lead to bugs and difficult to comprehend code.
 
@@ -64,8 +61,7 @@ sidebarDepth: 2
     const b = 2;
     ```
 
-  <a name="references--disallow-var"></a><a name="2.2"></a>
-  - [2.2](#references--disallow-var) Use `let` for variable for declaration.
+  - 2.2 Use `let` for variable for declaration.
 
     > Why? `let` is block-scoped rather than function-scoped like `var`.
 
@@ -83,8 +79,7 @@ sidebarDepth: 2
     }
     ```
 
-  <a name="references--block-scope"></a><a name="2.3"></a>
-  - [2.3](#references--block-scope) Note that both `let` and `const` are block-scoped.
+  - 2.3 Note that both `let` and `const` are block-scoped.
 
     ```javascript
     // const and let only exist in the blocks they are defined in.
@@ -98,8 +93,7 @@ sidebarDepth: 2
 
 ## Objects
 
-  <a name="objects--no-new"></a><a name="3.1"></a>
-  - [3.1](#objects--no-new) Use the literal syntax for object creation.
+  - 3.1 Use the literal syntax for object creation.
 
     ```javascript
     // bad
@@ -109,8 +103,7 @@ sidebarDepth: 2
     const item = {};
     ```
 
-  <a name="es6-computed-properties"></a><a name="3.4"></a>
-  - [3.2](#es6-computed-properties) Use computed property names when creating objects with dynamic property names.
+  - 3.2 Use computed property names when creating objects with dynamic property names.
 
     > Why? They allow you to define all the properties of an object in one place.
  
@@ -135,8 +128,7 @@ sidebarDepth: 2
     };
     ```
 
-  <a name="es6-object-shorthand"></a><a name="3.5"></a>
-  - [3.3](#es6-object-shorthand) Use object method shorthand.
+  - 3.3 Use object method shorthand.
 
     ```javascript
     // bad
@@ -158,8 +150,7 @@ sidebarDepth: 2
     };
     ```
 
-  <a name="es6-object-concise"></a><a name="3.6"></a>
-  - [3.4](#es6-object-concise) Use property value shorthand.
+  - 3.4 Use property value shorthand.
 
     > Why? It is shorter and descriptive.
 
@@ -177,8 +168,7 @@ sidebarDepth: 2
     };
     ```
 
-  <a name="objects--grouped-shorthand"></a><a name="3.7"></a>
-  - [3.5](#objects--grouped-shorthand) Group your shorthand properties at the beginning of your object declaration.
+  - 3.5 Group your shorthand properties at the beginning of your object declaration.
 
     > Why? It’s easier to tell which properties are using the shorthand.
 
