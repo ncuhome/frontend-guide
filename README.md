@@ -31,5 +31,5 @@ npm run dev
 
 NCUHOME Front End Style Guide is under MIT License
 
-Copyright (c) 2019 Zhenbin Wu @NCUHOME
+Copyright (c) 2019 NCUHOME
 
