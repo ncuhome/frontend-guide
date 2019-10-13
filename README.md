@@ -1,6 +1,6 @@
 # NCUHOME Front End Style Guide
 
-Style guide for ncuhomers. Heavily inspired by [eslint-config-alloy](https://github.com/AlloyTeam/eslint-config-alloy)
+Style guide for ncuhomers. Heavily inspired by [Alloy Team Tencent](https://github.com/AlloyTeam/eslint-config-alloy).
 
 ## Get Started
 
@@ -22,9 +22,10 @@ npm run dev
 
 ## Todos
 
-- [x] Vuepress multi language support
-- [ ] Travis CI configuration
-- [ ] Translate and review English original
+- [x] JavaScript Code Style Guide
+- [ ] React Code Style Guide
+- [ ] TypeScript Code Style Guide
+- [ ] Vue Code Style Guide
 
 ## License
 
