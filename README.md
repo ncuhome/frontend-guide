@@ -23,8 +23,8 @@ npm run dev
 ## Todos
 
 - [x] JavaScript Code Style Guide
-- [ ] React Code Style Guide
-- [ ] TypeScript Code Style Guide
+- [x] React Code Style Guide
+- [x] TypeScript Code Style Guide
 - [ ] Vue Code Style Guide
 
 ## License
