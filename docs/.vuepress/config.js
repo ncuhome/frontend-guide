@@ -4,6 +4,7 @@ module.exports = {
   // head: [
   //   ['link', { rel: 'icon', href: '/logo.png' }]
   // ],
+  base: '/frontend-guide/',
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },

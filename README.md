@@ -16,10 +16,12 @@ npm install
 npm run dev
 ```
 
-**Build and Publish**
+**Depoly**
 
-  Once master brach changes, CI will be triggered to build and publish this site.
-
+  1. run `npm install` locally
+  > Just to ensure that `package-lock.json` is included in `Git repo` which is an essential requirement for `npm ci`
+  2. run `deploy.sh`
+  
 ## Todos
 
 - [x] JavaScript Code Style Guide
