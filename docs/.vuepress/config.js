@@ -10,19 +10,24 @@ module.exports = {
       { text: 'Guide', link: '/guide/' },
       { text: 'About us', link: 'https://team.ncuos.com' },
     ],
-    sidebar: [{
-      title: 'JavaScript',
-      path: '/guide/js/'
-    }, {
-      title: 'TypeScript',
-      path: '/guide/ts/'
-    }, {
-      title: 'React',
-      path: '/guide/react/'
-    }, {
-      title: 'Vue',
-      path: '/guide/vue/'
-    }],
+    sidebar: [
+      {
+        title: 'JavaScript',
+        path: '/guide/js/'
+      },
+      // {
+      //   title: 'TypeScript',
+      //   path: '/guide/ts/'
+      // },
+      // {
+      //   title: 'React',
+      //   path: '/guide/react/'
+      // },
+      // {
+      //   title: 'Vue',
+      //   path: '/guide/vue/'
+      // }
+  ],
     editLinkText: 'Edit on GitHub',
     plugins: ['@vuepress/back-to-top'],
     lastUpdated: 'Last Updated',
