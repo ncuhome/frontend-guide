@@ -21,7 +21,15 @@ const foo = {
 // good
 const foo = {
     set bar(value) {
-        return 'bar ' + value;
+        this.barValue = 'bar ' + value;
+    },
+    get bar() {
+        return this.barValue;
+    }
+};
+const bar = {
+    get foo() {
+        return this.fooValue;
     }
 };
 ```
@@ -38,7 +46,7 @@ const foo = [1, 2, 3].map((num) => {
 
 // good
 const foo = [1, 2, 3].map((num) => {
-    console.log(num * num);
+    return num * num;
 });
 ```
 
@@ -83,6 +91,9 @@ function foo() {
     if (i === 8) console.log(i);
     if (i === 9) console.log(i);
     if (i === 10) console.log(i);
+    bar(i);
+}
+function bar(i) {
     if (i === 11) console.log(i);
     if (i === 12) console.log(i);
     if (i === 13) console.log(i);
@@ -96,6 +107,8 @@ function foo() {
 }
 ```
 
+> https://en.wikipedia.org/wiki/Cyclomatic_complexity
+
 ## [constructor-super](https://eslint.org/docs/rules/constructor-super)
 
 constructor 中必须有 super
@@ -108,7 +121,9 @@ class Foo extends Bar {
 
 // good
 class Foo extends Bar {
-    constructor() {}
+    constructor() {
+        super();
+    }
 }
 ```
 
@@ -124,9 +139,9 @@ if (bar != null) {
 }
 
 // good
-if (foo == 1) {
+if (foo === 1) {
 }
-if (bar != null) {
+if (bar !== null) {
 }
 ```
 
@@ -141,7 +156,7 @@ for (let i = 0; i &lt; 10; i--) {
 }
 
 // good
-for (let i = 0; i &lt; 10; i--) {
+for (let i = 0; i &lt; 10; i++) {
     // do something
 }
 ```
@@ -155,7 +170,8 @@ for (let i = 0; i &lt; 10; i--) {
 const foo = function bar() {};
 
 // good
-const foo = function bar() {};
+const foo = function() {};
+const bar = function bar() {};
 ```
 
 ## [getter-return](https://eslint.org/docs/rules/getter-return)
@@ -178,12 +194,12 @@ class User {
 // good
 const user = {
     get name() {
-        // do something
+        return 'Alex';
     }
 };
 class User {
     get name() {
-        return;
+        return this.name;
     }
 }
 ```
@@ -200,7 +216,9 @@ for (key in foo) {
 
 // good
 for (key in foo) {
-    doSomething(key);
+    if (Object.prototype.hasOwnProperty.call(foo, key)) {
+        doSomething(key);
+    }
 }
 ```
 
@@ -232,8 +250,6 @@ function foo() {
             if (true) {
                 if (true) {
                     if (true) {
-                        if (true) {
-                        }
                     }
                 }
             }
@@ -257,12 +273,10 @@ foo(() => {
 });
 
 // good
-foo(() => {
-    bar(() => {
-        baz(() => {
-            qux(() => {});
-        });
-    });
+foo(async () => {
+    await bar();
+    await baz();
+    await qux();
 });
 ```
 
@@ -275,7 +289,8 @@ foo(() => {
 function foo(a1, a2, a3, a4, a5, a6, a7, a8) {}
 
 // good
-function foo(a1, a2, a3, a4, a5, a6, a7, a8) {}
+function foo(a1, a2, a3, a4, a5, a6, a7) {}
+function bar({ a1, a2, a3, a4, a5, a6, a7, a8 }) {}
 ```
 
 ## [new-cap](https://eslint.org/docs/rules/new-cap)
@@ -288,8 +303,9 @@ new foo();
 new foo.bar();
 
 // good
-new foo();
-new foo.bar();
+new Foo();
+new foo.Bar();
+Foo();
 ```
 
 ## [no-array-constructor](https://eslint.org/docs/rules/no-array-constructor)
@@ -302,9 +318,15 @@ const foo = Array(0, 1, 2); // [0, 1, 2]
 const bar = new Array(0, 1, 2); // [0, 1, 2]
 
 // good
-const foo = Array(0, 1, 2); // [0, 1, 2]
-const bar = new Array(0, 1, 2); // [0, 1, 2]
+const foo = [0, 1, 2];
+Array(3); // [empty × 3]
+new Array(3); // [empty × 3]
+Array(3).fill('foo'); // ["foo", "foo", "foo"]
+new Array(3).fill('foo'); // ["foo", "foo", "foo"]
 ```
+
+> 参数为一个时表示创建一个指定长度的数组，比较常用
+参数为多个时表示创建一个指定内容的数组，此时可以用数组字面量实现，不必使用构造函数
 
 ## [no-async-promise-executor](https://eslint.org/docs/rules/no-async-promise-executor)
 
@@ -317,10 +339,12 @@ new Promise(async (resolve) => {
 });
 
 // good
-new Promise(async (resolve) => {
+new Promise((resolve) => {
     setTimeout(resolve, 1000);
 });
 ```
+
+> 出现这种情况时，一般不需要使用 new Promise 实现异步了
 
 ## [no-buffer-constructor](https://eslint.org/docs/rules/no-buffer-constructor)
 
@@ -332,9 +356,11 @@ new Buffer(5);
 Buffer([1, 2, 3]);
 
 // good
-new Buffer(5);
-Buffer([1, 2, 3]);
+Buffer.alloc(5);
+Buffer.from([1, 2, 3]);
 ```
+
+> Buffer 构造函数是已废弃的语法
 
 ## [no-caller](https://eslint.org/docs/rules/no-caller)
 
@@ -354,9 +380,11 @@ function foo(n) {
     if (n &lt;= 0) {
         return;
     }
-    arguments.callee(n - 1);
+    foo(n - 1);
 }
 ```
+
+> 它们是已废弃的语法
 
 ## [no-case-declarations](https://eslint.org/docs/rules/no-case-declarations)
 
@@ -372,9 +400,10 @@ switch (foo) {
 
 // good
 switch (foo) {
-    case 1:
+    case 1: {
         const x = 1;
         break;
+    }
 }
 ```
 
@@ -389,7 +418,6 @@ Foo = {};
 
 // good
 class Foo {}
-Foo = {};
 ```
 
 ## [no-compare-neg-zero](https://eslint.org/docs/rules/no-compare-neg-zero)
@@ -402,7 +430,7 @@ if (foo === -0) {
 }
 
 // good
-if (foo === -0) {
+if (foo === 0) {
 }
 ```
 
@@ -416,7 +444,9 @@ if (foo = 0) {
 }
 
 // good
-if (foo = 0) {
+if (foo === 0) {
+}
+if (bar === (foo = 0)) {
 }
 ```
 
@@ -430,8 +460,12 @@ const foo = 1;
 foo = 2;
 
 // good
-const foo = 1;
+let foo = 1;
 foo = 2;
+
+for (const bar in [1, 2, 3]) {
+    console.log(bar);
+}
 ```
 
 ## [no-constant-condition](https://eslint.org/docs/rules/no-constant-condition)
@@ -445,9 +479,12 @@ if (true) {
 const foo = 0 ? 'bar' : 'baz';
 
 // good
-if (true) {
+for (; true; ) {
+    if (foo === 0) break;
 }
-const foo = 0 ? 'bar' : 'baz';
+while (true) {
+    if (foo === 0) break;
+}
 ```
 
 ## [no-debugger](https://eslint.org/docs/rules/no-debugger)
@@ -462,7 +499,7 @@ if (foo) {
 
 // good
 if (foo) {
-    debugger;
+    // debugger;
 }
 ```
 
@@ -480,7 +517,7 @@ class Foo {
 // good
 class Foo {
     bar() {}
-    bar() {}
+    baz() {}
 }
 ```
 
@@ -498,7 +535,7 @@ const foo = {
 // good
 const foo = {
     bar: 1,
-    bar: 2
+    baz: 2
 };
 ```
 
@@ -523,7 +560,7 @@ switch (foo) {
         break;
     case 2:
         break;
-    case 1:
+    case 3:
         break;
 }
 ```
@@ -538,8 +575,7 @@ import { readFile } from 'fs';
 import { writeFile } from 'fs';
 
 // good
-import { readFile } from 'fs';
-import { writeFile } from 'fs';
+import { readFile, writeFile } from 'fs';
 ```
 
 ## [no-empty](https://eslint.org/docs/rules/no-empty)
@@ -553,7 +589,11 @@ if (foo) {
 
 // good
 if (foo) {
+    // do something
 }
+try {
+    // do something
+} catch (e) {}
 ```
 
 ## [no-empty-character-class](https://eslint.org/docs/rules/no-empty-character-class)
@@ -565,7 +605,7 @@ if (foo) {
 const reg = /abc[]/;
 
 // good
-const reg = /abc[]/;
+const reg = /abc[a-z]/;
 ```
 
 ## [no-empty-pattern](https://eslint.org/docs/rules/no-empty-pattern)
@@ -577,7 +617,7 @@ const reg = /abc[]/;
 const {} = foo;
 
 // good
-const {} = foo;
+const { bar } = foo;
 ```
 
 ## [no-eq-null](https://eslint.org/docs/rules/no-eq-null)
@@ -590,7 +630,7 @@ if (foo == null) {
 }
 
 // good
-if (foo == null) {
+if (foo === null) {
 }
 ```
 
@@ -603,7 +643,7 @@ if (foo == null) {
 eval('const foo = 0');
 
 // good
-eval('const foo = 0');
+const foo = 0;
 ```
 
 ## [no-ex-assign](https://eslint.org/docs/rules/no-ex-assign)
@@ -620,7 +660,7 @@ try {
 // good
 try {
 } catch (e) {
-    e = 10;
+    console.error(e);
 }
 ```
 
@@ -637,12 +677,14 @@ Array.prototype.flat = function() {
 [1, [2, 3]].flat();
 
 // good
-Array.prototype.flat = function() {
+function flat(arr) {
     // do something
-};
+}
 
-[1, [2, 3]].flat();
+flat([1, [2, 3]]);
 ```
+
+> 修改原生对象可能会与将来版本的 js 冲突
 
 ## [no-extra-bind](https://eslint.org/docs/rules/no-extra-bind)
 
@@ -656,7 +698,7 @@ Array.prototype.flat = function() {
 
 // good
 (function() {
-    foo();
+    this.foo();
 }.bind(bar));
 ```
 
@@ -672,9 +714,9 @@ if (Boolean(foo)) {
 }
 
 // good
-if (!!foo) {
+if (foo) {
 }
-if (Boolean(foo)) {
+if (!foo) {
 }
 ```
 
@@ -695,8 +737,14 @@ switch (foo) {
 switch (foo) {
     case 1:
         doSomething();
+        break;
     case 2:
         doSomethingElse();
+}
+switch (foo) {
+    case 1:
+    case 2:
+        doSomething();
 }
 ```
 
@@ -710,7 +758,7 @@ function foo() {}
 foo = 1;
 
 // good
-function foo() {}
+let foo = function() {};
 foo = 1;
 ```
 
@@ -723,7 +771,7 @@ foo = 1;
 Object = null;
 
 // good
-Object = null;
+foo = null;
 ```
 
 ## [no-implicit-coercion](https://eslint.org/docs/rules/no-implicit-coercion)
@@ -739,11 +787,13 @@ const s = '' + foo;
 foo += '';
 
 // good
-const b = ~foo.indexOf('.');
-const n = +foo;
-const m = 1 * foo;
-const s = '' + foo;
-foo += '';
+const b = foo.indexOf('.') !== -1;
+const n = Number(foo);
+const m = Number(foo);
+const s = String(foo);
+foo = String(foo);
+
+const c = !!foo;
 ```
 
 ## [no-implied-eval](https://eslint.org/docs/rules/no-implied-eval)
@@ -755,7 +805,9 @@ foo += '';
 setTimeout('alert("Hello World");', 1000);
 
 // good
-setTimeout('alert("Hello World");', 1000);
+setTimeout(() => {
+    alert('Hello World');
+}, 1000);
 ```
 
 ## [no-inner-declarations](https://eslint.org/docs/rules/no-inner-declarations)
@@ -770,7 +822,7 @@ if (foo) {
 
 // good
 if (foo) {
-    function bar() {}
+    const bar = function() {};
 }
 ```
 
@@ -784,8 +836,8 @@ const reg1 = new RegExp('[');
 const reg2 = new RegExp('.', 'z');
 
 // good
-const reg1 = new RegExp('[');
-const reg2 = new RegExp('.', 'z');
+const reg1 = new RegExp('[a-z]');
+const reg2 = new RegExp('.', 'g');
 ```
 
 ## [no-invalid-this](https://eslint.org/docs/rules/no-invalid-this)
@@ -799,10 +851,14 @@ function foo() {
 }
 
 // good
-function foo() {
-    this.a = 0;
+class Foo {
+    constructor() {
+        this.a = 0;
+    }
 }
 ```
+
+> 只允许在 class 中使用 this
 
 ## [no-irregular-whitespace](https://eslint.org/docs/rules/no-irregular-whitespace)
 
@@ -814,8 +870,9 @@ function foo()　{
 }
 
 // good
-function foo()　{
-}
+const foo = '　';
+const bar = /　/;
+const baz = `　`;
 ```
 
 ## [no-iterator](https://eslint.org/docs/rules/no-iterator)
@@ -829,10 +886,18 @@ Foo.prototype.__iterator__ = function() {
 };
 
 // good
-Foo.prototype.__iterator__ = function() {
-    return new FooIterator(this);
+let foo = {};
+foo[Symbol.iterator] = function*() {
+    yield 1;
+    yield 2;
+    yield 3;
 };
+console.log([...foo]);
+// [1, 2, 3]
 ```
+
+> __iterator__ 是一个已废弃的属性
+使用 [Symbol.iterator] 替代它
 
 ## [no-labels](https://eslint.org/docs/rules/no-labels)
 
@@ -850,13 +915,12 @@ loop:
 // 0 2 3 4
 
 // good
-loop:
-    for (let i = 0; i &lt; 5; i++) {
-        if (i === 1) {
-            continue loop;
-        }
-        console.log(i);
+for (let i = 0; i &lt; 5; i++) {
+    if (i === 1) {
+        continue;
     }
+    console.log(i);
+}
 // 0 2 3 4
 ```
 
@@ -871,8 +935,8 @@ loop:
 }
 
 // good
-{
-    foo();
+if (foo) {
+    bar();
 }
 ```
 
@@ -885,8 +949,10 @@ loop:
 /^[Á]$/u.test('Á'); // false
 
 // good
-/^[Á]$/u.test('Á'); // false
+/^[A]$/u.test('A'); // true
 ```
+
+> 某些特殊字符很难看出差异，最好不要在正则中使用
 
 ## [no-multi-str](https://eslint.org/docs/rules/no-multi-str)
 
@@ -898,8 +964,8 @@ const foo = 'Line 1\
 Line 2';
 
 // good
-const foo = 'Line 1\
-Line 2';
+const foo = `Line 1
+Line 2`;
 ```
 
 ## [no-new](https://eslint.org/docs/rules/no-new)
@@ -911,8 +977,10 @@ Line 2';
 new Foo();
 
 // good
-new Foo();
+const foo = new foo();
 ```
+
+> new 应该作为创建一个类的实例的方法，所以不能不赋值
 
 ## [no-new-func](https://eslint.org/docs/rules/no-new-func)
 
@@ -923,8 +991,12 @@ new Foo();
 const foo = new Function('a', 'b', 'return a + b');
 
 // good
-const foo = new Function('a', 'b', 'return a + b');
+const foo = function(a, b) {
+    return a + b;
+};
 ```
+
+> 这和 eval 是等价的
 
 ## [no-new-object](https://eslint.org/docs/rules/no-new-object)
 
@@ -935,7 +1007,7 @@ const foo = new Function('a', 'b', 'return a + b');
 const foo = new Object();
 
 // good
-const foo = new Object();
+const foo = {};
 ```
 
 ## [no-new-require](https://eslint.org/docs/rules/no-new-require)
@@ -947,7 +1019,8 @@ const foo = new Object();
 const foo = new require('foo');
 
 // good
-const foo = new require('foo');
+const Foo = require('foo');
+const foo = new Foo();
 ```
 
 ## [no-new-symbol](https://eslint.org/docs/rules/no-new-symbol)
@@ -959,7 +1032,7 @@ const foo = new require('foo');
 const foo = new Symbol('foo');
 
 // good
-const foo = new Symbol('foo');
+const foo = Symbol('foo');
 ```
 
 ## [no-new-wrappers](https://eslint.org/docs/rules/no-new-wrappers)
@@ -973,9 +1046,9 @@ const n = new Number(1);
 const b = new Boolean(true);
 
 // good
-const s = new String('foo');
-const n = new Number(1);
-const b = new Boolean(true);
+const s = String(someValue);
+const n = Number(someValue);
+const b = Boolean(someValue);
 ```
 
 ## [no-obj-calls](https://eslint.org/docs/rules/no-obj-calls)
@@ -989,9 +1062,9 @@ const bar = JSON();
 const baz = Reflect();
 
 // good
-const foo = Math();
-const bar = JSON();
-const baz = Reflect();
+const foo = Math.random();
+const bar = JSON.parse('{}');
+const baz = Reflect.get({ x: 1, y: 2 }, 'x');
 ```
 
 ## [no-param-reassign](https://eslint.org/docs/rules/no-param-reassign)
@@ -1005,8 +1078,8 @@ function foo(bar) {
 }
 
 // good
-function foo(bar) {
-    bar = bar || '';
+function foo(bar_) {
+    bar = bar_ || '';
 }
 ```
 
@@ -1020,9 +1093,13 @@ const foo = __dirname + '/foo.js';
 const bar = __filename + '/bar.js';
 
 // good
-const foo = __dirname + '/foo.js';
-const bar = __filename + '/bar.js';
+import path from 'path';
+
+const foo = path.resolve(__dirname, 'foo.js');
+const bar = path.join(__filename, 'bar.js');
 ```
+
+> 不同平台下的路径符号不一致，建议使用 path 处理平台差异性
 
 ## [no-proto](https://eslint.org/docs/rules/no-proto)
 
@@ -1034,9 +1111,11 @@ const foo = bar.__proto__;
 bar.__proto__ = baz;
 
 // good
-const foo = bar.__proto__;
-bar.__proto__ = baz;
+const foo = Object.getPrototypeOf(bar);
+Object.setPrototypeOf(bar, baz);
 ```
+
+> __proto__ 是已废弃的语法
 
 ## [no-regex-spaces](https://eslint.org/docs/rules/no-regex-spaces)
 
@@ -1048,8 +1127,8 @@ const reg1 = /foo   bar/;
 const reg2 = new RegExp('foo   bar');
 
 // good
-const reg1 = /foo   bar/;
-const reg2 = new RegExp('foo   bar');
+const reg1 = /foo {3}bar/;
+const reg2 = new RegExp('foo {3}bar');
 ```
 
 ## [no-return-assign](https://eslint.org/docs/rules/no-return-assign)
@@ -1064,7 +1143,8 @@ function foo() {
 
 // good
 function foo() {
-    return (bar = 1);
+    bar = 1;
+    return bar;
 }
 ```
 
@@ -1080,7 +1160,8 @@ async function foo() {
 
 // good
 async function foo() {
-    return await bar();
+    const b = await bar();
+    return b;
 }
 ```
 
@@ -1093,7 +1174,7 @@ async function foo() {
 foo = foo;
 
 // good
-foo = foo;
+foo = bar;
 ```
 
 ## [no-self-compare](https://eslint.org/docs/rules/no-self-compare)
@@ -1108,9 +1189,9 @@ if (NaN === NaN) {
 }
 
 // good
-if (foo === foo) {
+if (foo === bar) {
 }
-if (NaN === NaN) {
+if (isNaN(foo)) {
 }
 ```
 
@@ -1123,7 +1204,8 @@ if (NaN === NaN) {
 foo = doSomething(), 1;
 
 // good
-foo = doSomething(), 1;
+doSomething();
+foo = 1;
 ```
 
 ## [no-shadow-restricted-names](https://eslint.org/docs/rules/no-shadow-restricted-names)
@@ -1137,9 +1219,9 @@ function foo(NaN) {}
 function Infinity() {}
 
 // good
-const undefined = 1;
-function foo(NaN) {}
-function Infinity() {}
+console.log(undefined);
+console.log(NaN);
+console.log(Infinity);
 ```
 
 ## [no-sparse-arrays](https://eslint.org/docs/rules/no-sparse-arrays)
@@ -1151,7 +1233,7 @@ function Infinity() {}
 const foo = [1, 2, , 3];
 
 // good
-const foo = [1, 2, , 3];
+const foo = [1, 2, 3];
 ```
 
 ## [no-template-curly-in-string](https://eslint.org/docs/rules/no-template-curly-in-string)
@@ -1163,7 +1245,7 @@ const foo = [1, 2, , 3];
 const foo = 'Hello ${bar}';
 
 // good
-const foo = 'Hello ${bar}';
+const foo = 'Hello {bar}';
 ```
 
 ## [no-this-before-super](https://eslint.org/docs/rules/no-this-before-super)
@@ -1182,8 +1264,8 @@ class Foo extends Bar {
 // good
 class Foo extends Bar {
     constructor() {
-        this.foo = 1;
         super();
+        this.foo = 1;
     }
 }
 ```
@@ -1198,8 +1280,7 @@ throw 'foo';
 throw 1;
 
 // good
-throw 'foo';
-throw 1;
+throw new Error('foo');
 ```
 
 ## [no-undef](https://eslint.org/docs/rules/no-undef)
@@ -1211,7 +1292,12 @@ throw 1;
 foo(bar);
 
 // good
+function foo() {}
+const bar = 1;
 foo(bar);
+
+if (typeof baz === 'number') {
+}
 ```
 
 ## [no-undef-init](https://eslint.org/docs/rules/no-undef-init)
@@ -1223,7 +1309,7 @@ foo(bar);
 let foo = undefined;
 
 // good
-let foo = undefined;
+let foo;
 ```
 
 ## [no-unmodified-loop-condition](https://eslint.org/docs/rules/no-unmodified-loop-condition)
@@ -1241,6 +1327,7 @@ while (foo) {
 let foo = 10;
 while (foo) {
     console.log(foo);
+    foo--;
 }
 ```
 
@@ -1258,7 +1345,7 @@ function foo() {
 // good
 function foo() {
     return;
-    const bar = 1;
+    // const bar = 1;
 }
 ```
 
@@ -1282,11 +1369,12 @@ function foo() {
     try {
         return 1;
     } finally {
-        // finally 会在 try 之前执行，故会 return 2
-        return 2;
+        console.log(2);
     }
 }
 ```
+
+> finally 中的语句会在 try 之前执行
 
 ## [no-unsafe-negation](https://eslint.org/docs/rules/no-unsafe-negation)
 
@@ -1300,9 +1388,9 @@ if (!obj instanceof SomeClass) {
 }
 
 // good
-if (!key in object) {
+if (!(key in object)) {
 }
-if (!obj instanceof SomeClass) {
+if (!(obj instanceof SomeClass)) {
 }
 ```
 
@@ -1321,13 +1409,11 @@ foo ? bar : baz;
 `bar`;
 
 // good
-1;
-foo;
-('foo');
-foo &amp;&amp; bar;
-foo || bar;
-foo ? bar : baz;
-`bar`;
+'use strict';
+foo &amp;&amp; bar();
+foo || bar();
+foo ? bar() : baz();
+foo`bar`;
 ```
 
 ## [no-unused-vars](https://eslint.org/docs/rules/no-unused-vars)
@@ -1345,11 +1431,16 @@ const { baz, ...rest } = data;
 
 // good
 let foo = 1;
-foo = 2;
+console.log(foo);
 
 function bar(baz) {}
+bar();
 
 const { baz, ...rest } = data;
+console.log(baz, rest);
+
+try {
+} catch (e) {}
 ```
 
 ## [no-use-before-define](https://eslint.org/docs/rules/no-use-before-define)
@@ -1365,11 +1456,20 @@ new Baz();
 class Baz {}
 
 // good
-console.log(foo);
+(() => {
+    console.log(foo);
+})();
 const foo = 1;
+console.log(foo);
 
-new Baz();
+bar();
+function bar() {}
+
+(() => {
+    new Baz();
+})();
 class Baz {}
+new Baz();
 ```
 
 ## [no-useless-call](https://eslint.org/docs/rules/no-useless-call)
@@ -1385,11 +1485,11 @@ foo.bar.call(foo, 1, 2, 3); // foo.bar(1, 2, 3);
 foo.bar.apply(foo, [1, 2, 3]); // foo.bar(1, 2, 3);
 
 // good
-foo.call(null, 1, 2, 3); // foo(1, 2, 3)
-foo.apply(null, [1, 2, 3]); // foo(1, 2, 3)
+foo.call(bar, 1, 2, 3);
+foo.apply(bar, [1, 2, 3]);
 
-foo.bar.call(foo, 1, 2, 3); // foo.bar(1, 2, 3);
-foo.bar.apply(foo, [1, 2, 3]); // foo.bar(1, 2, 3);
+foo.bar.call(baz, 1, 2, 3);
+foo.bar.apply(baz, [1, 2, 3]);
 ```
 
 ## [no-useless-catch](https://eslint.org/docs/rules/no-useless-catch)
@@ -1405,12 +1505,17 @@ try {
 }
 
 // good
+doSomethingThatMightThrow();
+
 try {
     doSomethingThatMightThrow();
 } catch (e) {
+    doSomethingBeforeRethrow();
     throw e;
 }
 ```
+
+> 这样的 catch 是没有意义的，等价于直接执行 try 里的代码
 
 ## [no-useless-computed-key](https://eslint.org/docs/rules/no-useless-computed-key)
 
@@ -1425,8 +1530,8 @@ const foo = {
 
 // good
 const foo = {
-    ['1']: 1,
-    ['bar']: 'bar'
+    1: 1,
+    bar: 'bar'
 };
 ```
 
@@ -1440,8 +1545,8 @@ const foo = 'f' + 'oo';
 const bar = `b` + `ar`;
 
 // good
-const foo = 'f' + 'oo';
-const bar = `b` + `ar`;
+const foo = 'fo';
+const bar = 1 + `ar`;
 ```
 
 ## [no-useless-constructor](https://eslint.org/docs/rules/no-useless-constructor)
@@ -1461,11 +1566,14 @@ class Bar extends Foo {
 
 // good
 class Foo {
-    constructor() {}
+    constructor() {
+        doSomething();
+    }
 }
 class Bar extends Foo {
     constructor(...args) {
         super(...args);
+        doSomething();
     }
 }
 ```
@@ -1482,10 +1590,10 @@ export { bar as bar };
 let { baz: baz } = foo;
 
 // good
-import { foo as foo } from 'foo';
+import { foo } from 'foo';
 const bar = 1;
-export { bar as bar };
-let { baz: baz } = foo;
+export { bar };
+let { baz } = foo;
 ```
 
 ## [no-var](https://eslint.org/docs/rules/no-var)
@@ -1497,7 +1605,8 @@ let { baz: baz } = foo;
 var foo = 1;
 
 // good
-var foo = 1;
+let foo = 1;
+const bar = 2;
 ```
 
 ## [no-void](https://eslint.org/docs/rules/no-void)
@@ -1512,7 +1621,7 @@ function foo() {
 
 // good
 function foo() {
-    return void 0;
+    return;
 }
 ```
 
@@ -1527,9 +1636,10 @@ const baz = 1,
     qux = 2;
 
 // good
-let foo, bar;
-const baz = 1,
-    qux = 2;
+let foo;
+let bar;
+const baz = 1;
+const qux = 2;
 ```
 
 ## [prefer-object-spread](https://eslint.org/docs/rules/prefer-object-spread)
@@ -1541,7 +1651,10 @@ const baz = 1,
 const foo = Object.assign({}, bar);
 
 // good
-const foo = Object.assign({}, bar);
+const foo = { ...bar };
+
+// 第一个参数为变量时允许使用 Object.assign
+Object.assign(foo, baz);
 ```
 
 ## [prefer-promise-reject-errors](https://eslint.org/docs/rules/prefer-promise-reject-errors)
@@ -1561,14 +1674,10 @@ new Promise((resolve, reject) => {
 });
 
 // good
-Promise.reject('foo');
+Promise.reject(new Error('foo'));
 
 new Promise((resolve, reject) => {
-    reject();
-});
-
-new Promise((resolve, reject) => {
-    reject('foo');
+    reject(new Error('foo'));
 });
 ```
 
@@ -1581,7 +1690,7 @@ parseInt 必须传入第二个参数
 const foo = parseInt('071'); // 57
 
 // good
-const foo = parseInt('071'); // 57
+const foo = parseInt('071', 10); // 71
 ```
 
 ## [require-yield](https://eslint.org/docs/rules/require-yield)
@@ -1596,7 +1705,8 @@ function* foo() {
 
 // good
 function* foo() {
-    return 1;
+    yield 1;
+    return 2;
 }
 ```
 
@@ -1611,9 +1721,9 @@ function* foo() {
 /**baz */
 
 // good
-//foo
-/*bar */
-/**baz */
+// foo
+/* bar */
+/** baz */
 ```
 
 ## [strict](https://eslint.org/docs/rules/strict)
@@ -1628,10 +1738,7 @@ function foo() {
 }
 
 // good
-'use strict';
-function foo() {
-    'use strict';
-}
+function foo() {}
 ```
 
 ## [symbol-description](https://eslint.org/docs/rules/symbol-description)
@@ -1643,7 +1750,7 @@ function foo() {
 const foo = Symbol();
 
 // good
-const foo = Symbol();
+const foo = Symbol('foo');
 ```
 
 ## [use-isnan](https://eslint.org/docs/rules/use-isnan)
@@ -1656,7 +1763,7 @@ if (foo === NaN) {
 }
 
 // good
-if (foo === NaN) {
+if (isNaN(foo)) {
 }
 ```
 
@@ -1670,7 +1777,7 @@ if (typeof foo === 'numbe') {
 }
 
 // good
-if (typeof foo === 'numbe') {
+if (typeof foo === 'number') {
 }
 ```
 
@@ -1684,6 +1791,10 @@ if (1 === foo) {
 }
 
 // good
-if (1 === foo) {
+if (foo === 1) {
+}
+if (1 &lt; foo) {
+}
+if (1 &lt; foo &amp;&amp; foo &lt; 10) {
 }
 ```

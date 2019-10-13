@@ -12,19 +12,19 @@ module.exports = {
     ],
     sidebar: [
       {
-        title: 'JavaScript',
+        title: 'JavaScript 代码风格',
         path: '/guide/js/'
       },
+      {
+        title: 'TypeScript 代码风格',
+        path: '/guide/ts/'
+      },
+      {
+        title: 'React 代码风格',
+        path: '/guide/react/'
+      },
       // {
-      //   title: 'TypeScript',
-      //   path: '/guide/ts/'
-      // },
-      // {
-      //   title: 'React',
-      //   path: '/guide/react/'
-      // },
-      // {
-      //   title: 'Vue',
+      //   title: 'Vue 代码风格',
       //   path: '/guide/vue/'
       // }
   ],
