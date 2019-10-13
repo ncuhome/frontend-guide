@@ -1,9 +1,9 @@
 module.exports = {
   title: 'NCUHOME FE Guide',
   // description: '',
-  // head: [
-  //   ['link', { rel: 'icon', href: '/logo.png' }]
-  // ],
+  head: [
+    ['link', { rel: 'icon', href: 'https://ncustatic.ncuos.com/index/1570754776734.logo.png' }]
+  ],
   base: '/frontend-guide/',
   themeConfig: {
     nav: [
