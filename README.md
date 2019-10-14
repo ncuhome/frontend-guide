@@ -28,10 +28,10 @@ npm run dev
 - [x] React Code Style Guide
 - [x] TypeScript Code Style Guide
 - [ ] Vue Code Style Guide
+- [ ] Naming Rules
 
 ## License
 
 NCUHOME Front End Style Guide is under MIT License
 
 Copyright (c) 2019 NCUHOME
-
