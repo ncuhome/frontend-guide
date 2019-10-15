@@ -13,6 +13,14 @@ module.exports = {
     ],
     sidebar: [
       {
+        title: '命名规范',
+        path: '/guide/naming/'
+      },
+      {
+        title: 'CSS 代码风格',
+        path: '/guide/css/'
+      },
+      {
         title: 'JavaScript 代码风格',
         path: '/guide/js/'
       },
@@ -27,7 +35,8 @@ module.exports = {
       // {
       //   title: 'Vue 代码风格',
       //   path: '/guide/vue/'
-      // }
+      // },
+      
   ],
     editLinkText: 'Edit on GitHub',
     plugins: ['@vuepress/back-to-top'],
