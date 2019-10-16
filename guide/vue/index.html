@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>NCUHOME Vue 代码风格指南 | NCUHOME FE Guide</title>
+    <meta name="description" content="">
+    <link rel="icon" href="https://ncustatic.ncuos.com/index/1570754776734.logo.png">
+    
+    <link rel="preload" href="/frontend-guide/assets/css/0.styles.522ad699.css" as="style"><link rel="preload" href="/frontend-guide/assets/js/app.945283a3.js" as="script"><link rel="preload" href="/frontend-guide/assets/js/2.553c0fdf.js" as="script"><link rel="preload" href="/frontend-guide/assets/js/12.847f57a4.js" as="script"><link rel="prefetch" href="/frontend-guide/assets/js/10.d9a0745e.js"><link rel="prefetch" href="/frontend-guide/assets/js/11.43b96490.js"><link rel="prefetch" href="/frontend-guide/assets/js/13.939efcb0.js"><link rel="prefetch" href="/frontend-guide/assets/js/3.fe4ccd4e.js"><link rel="prefetch" href="/frontend-guide/assets/js/4.2119a9f7.js"><link rel="prefetch" href="/frontend-guide/assets/js/5.f5d71f70.js"><link rel="prefetch" href="/frontend-guide/assets/js/6.2aaf0ab8.js"><link rel="prefetch" href="/frontend-guide/assets/js/7.52e09f21.js"><link rel="prefetch" href="/frontend-guide/assets/js/8.e18db66a.js"><link rel="prefetch" href="/frontend-guide/assets/js/9.b3acbae1.js">
+    <link rel="stylesheet" href="/frontend-guide/assets/css/0.styles.522ad699.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/frontend-guide/" class="home-link router-link-active"><!----> <span class="site-name">NCUHOME FE Guide</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/frontend-guide/" class="nav-link">Home</a></div><div class="nav-item"><a href="/frontend-guide/guide/" class="nav-link router-link-active">Guide</a></div><div class="nav-item"><a href="https://team.ncuos.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  About us
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <a href="https://github.com/ncuhome/frontend-guide" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/frontend-guide/" class="nav-link">Home</a></div><div class="nav-item"><a href="/frontend-guide/guide/" class="nav-link router-link-active">Guide</a></div><div class="nav-item"><a href="https://team.ncuos.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  About us
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <a href="https://github.com/ncuhome/frontend-guide" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><a href="/frontend-guide/guide/naming/" class="sidebar-link">命名规范</a></li><li><a href="/frontend-guide/guide/css/" class="sidebar-link">CSS 代码风格</a></li><li><a href="/frontend-guide/guide/js/" class="sidebar-link">JavaScript 代码风格</a></li><li><a href="/frontend-guide/guide/ts/" class="sidebar-link">TypeScript 代码风格</a></li><li><a href="/frontend-guide/guide/react/" class="sidebar-link">React 代码风格</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="ncuhome-vue-代码风格指南"><a href="#ncuhome-vue-代码风格指南" aria-hidden="true" class="header-anchor">#</a> NCUHOME Vue 代码风格指南</h1> <h2 id="vue-attributes-order"><a href="#vue-attributes-order" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/attributes-order" target="_blank" rel="noopener noreferrer">vue/attributes-order<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>标签属性必须按规则排序</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+
+
+// good
+
+</code></pre></div><h2 id="vue-comment-directive"><a href="#vue-comment-directive" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/comment-directive" target="_blank" rel="noopener noreferrer">vue/comment-directive<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>支持在模版中使用 eslint-disable-next-line 等注释</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+
+
+// good
+
+</code></pre></div><h2 id="vue-eqeqeq"><a href="#vue-eqeqeq" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/eqeqeq" target="_blank" rel="noopener noreferrer">vue/eqeqeq<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>必须使用 === 或 !==，禁止使用 == 或 !=</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">:attr</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>foo == 1<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+// good
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">:attr</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>foo === 1<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h2 id="vue-jsx-uses-vars"><a href="#vue-jsx-uses-vars" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/jsx-uses-vars" target="_blank" rel="noopener noreferrer">vue/jsx-uses-vars<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>已定义的 jsx element 必须使用</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+
+
+// good
+
+</code></pre></div><h2 id="vue-no-async-in-computed-properties"><a href="#vue-no-async-in-computed-properties" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/no-async-in-computed-properties" target="_blank" rel="noopener noreferrer">vue/no-async-in-computed-properties<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>计算属性禁止包含异步方法</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+
+
+// good
+
+</code></pre></div><h2 id="vue-no-duplicate-attributes"><a href="#vue-no-duplicate-attributes" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/no-duplicate-attributes" target="_blank" rel="noopener noreferrer">vue/no-duplicate-attributes<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>禁止出现重复的属性</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+
+
+// good
+
+</code></pre></div><h2 id="vue-no-parsing-error"><a href="#vue-no-parsing-error" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/no-parsing-error" target="_blank" rel="noopener noreferrer">vue/no-parsing-error<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>禁止出现语法错误</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>{{ message. }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+// good
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>{{ message }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h2 id="vue-no-reserved-keys"><a href="#vue-no-reserved-keys" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/no-reserved-keys" target="_blank" rel="noopener noreferrer">vue/no-reserved-keys<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>禁止覆盖保留字</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+
+
+// good
+
+</code></pre></div><h2 id="vue-no-textarea-mustache"><a href="#vue-no-textarea-mustache" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/no-textarea-mustache" target="_blank" rel="noopener noreferrer">vue/no-textarea-mustache<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>禁止在 &lt;textarea&gt; 中出现 Mustache 语法</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+
+
+// good
+
+</code></pre></div><h2 id="vue-no-unused-components"><a href="#vue-no-unused-components" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/no-unused-components" target="_blank" rel="noopener noreferrer">vue/no-unused-components<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>禁止定义在 components 中的组件未使用</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+
+
+// good
+
+</code></pre></div><h2 id="vue-no-unused-vars"><a href="#vue-no-unused-vars" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/no-unused-vars" target="_blank" rel="noopener noreferrer">vue/no-unused-vars<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>模版中已定义的变量必须使用</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+
+
+// good
+
+</code></pre></div><h2 id="vue-no-use-v-if-with-v-for"><a href="#vue-no-use-v-if-with-v-for" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/no-use-v-if-with-v-for" target="_blank" rel="noopener noreferrer">vue/no-use-v-if-with-v-for<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>禁止在同一个元素上使用 v-if 和 v-for 指令</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+
+
+// good
+
+</code></pre></div><h2 id="vue-order-in-components"><a href="#vue-order-in-components" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/order-in-components" target="_blank" rel="noopener noreferrer">vue/order-in-components<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>组件的属性必须为一定的顺序</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+
+
+// good
+
+</code></pre></div><h2 id="vue-require-component-is"><a href="#vue-require-component-is" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/require-component-is" target="_blank" rel="noopener noreferrer">vue/require-component-is<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>&lt;component&gt; 必须有 v-bind:is</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+
+
+// good
+
+</code></pre></div><h2 id="vue-require-default-prop"><a href="#vue-require-default-prop" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/require-default-prop" target="_blank" rel="noopener noreferrer">vue/require-default-prop<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>props 如果不是 required 的字段，必须有默认值</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+
+
+// good
+
+</code></pre></div><h2 id="vue-require-direct-export"><a href="#vue-require-direct-export" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/require-direct-export" target="_blank" rel="noopener noreferrer">vue/require-direct-export<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>禁止手动 export default</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+
+
+// good
+
+</code></pre></div><h2 id="vue-require-prop-type-constructor"><a href="#vue-require-prop-type-constructor" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/require-prop-type-constructor" target="_blank" rel="noopener noreferrer">vue/require-prop-type-constructor<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>props 的取值必须是构造函数</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+
+
+// good
+
+</code></pre></div><h2 id="vue-require-render-return"><a href="#vue-require-render-return" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/require-render-return" target="_blank" rel="noopener noreferrer">vue/require-render-return<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>render 函数必须有返回值</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+
+
+// good
+
+</code></pre></div><h2 id="vue-require-v-for-key"><a href="#vue-require-v-for-key" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/require-v-for-key" target="_blank" rel="noopener noreferrer">vue/require-v-for-key<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>v-for 指令的元素必须有 v-bind:key</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+
+
+// good
+
+</code></pre></div><h2 id="vue-return-in-computed-property"><a href="#vue-return-in-computed-property" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/return-in-computed-property" target="_blank" rel="noopener noreferrer">vue/return-in-computed-property<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>计算属性必须有返回值</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+
+
+// good
+
+</code></pre></div><h2 id="vue-this-in-template"><a href="#vue-this-in-template" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/this-in-template" target="_blank" rel="noopener noreferrer">vue/this-in-template<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>禁止在模版中用 this</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+
+
+// good
+
+</code></pre></div><h2 id="vue-use-v-on-exact"><a href="#vue-use-v-on-exact" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/use-v-on-exact" target="_blank" rel="noopener noreferrer">vue/use-v-on-exact<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>当一个节点上出现两个 v-on:click 时，其中一个必须为 exact</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+
+
+// good
+
+</code></pre></div><h2 id="vue-v-on-function-call"><a href="#vue-v-on-function-call" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/v-on-function-call" target="_blank" rel="noopener noreferrer">vue/v-on-function-call<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>禁止在 v-on 的值中调用函数</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+
+
+// good
+
+</code></pre></div><h2 id="vue-valid-template-root"><a href="#vue-valid-template-root" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/valid-template-root" target="_blank" rel="noopener noreferrer">vue/valid-template-root<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>template 的根节点必须合法</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+
+
+// good
+
+</code></pre></div><h2 id="vue-valid-v-bind"><a href="#vue-valid-v-bind" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/valid-v-bind" target="_blank" rel="noopener noreferrer">vue/valid-v-bind<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>v-bind 指令必须合法</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">v-bind</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">:aaa</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name"><span class="token namespace">v-bind:</span>aaa.bbb</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>foo<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+// good
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">v-bind</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>foo<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name"><span class="token namespace">v-bind:</span>aaa</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>foo<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">:aaa</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>foo<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">:aaa.prop</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>foo<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h2 id="vue-valid-v-cloak"><a href="#vue-valid-v-cloak" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/valid-v-cloak" target="_blank" rel="noopener noreferrer">vue/valid-v-cloak<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>v-cloak 指令必须合法</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+
+
+// good
+
+</code></pre></div><h2 id="vue-valid-v-else"><a href="#vue-valid-v-else" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/valid-v-else" target="_blank" rel="noopener noreferrer">vue/valid-v-else<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>v-else 指令必须合法</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+
+
+// good
+
+</code></pre></div><h2 id="vue-valid-v-else-if"><a href="#vue-valid-v-else-if" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/valid-v-else-if" target="_blank" rel="noopener noreferrer">vue/valid-v-else-if<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>v-else-if 指令必须合法</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+
+
+// good
+
+</code></pre></div><h2 id="vue-valid-v-for"><a href="#vue-valid-v-for" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/valid-v-for" target="_blank" rel="noopener noreferrer">vue/valid-v-for<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>v-for 指令必须合法</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+
+
+// good
+
+</code></pre></div><h2 id="vue-valid-v-html"><a href="#vue-valid-v-html" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/valid-v-html" target="_blank" rel="noopener noreferrer">vue/valid-v-html<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>v-html 指令必须合法</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+
+
+// good
+
+</code></pre></div><h2 id="vue-valid-v-if"><a href="#vue-valid-v-if" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/valid-v-if" target="_blank" rel="noopener noreferrer">vue/valid-v-if<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>v-if 指令必须合法</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+
+
+// good
+
+</code></pre></div><h2 id="vue-valid-v-model"><a href="#vue-valid-v-model" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/valid-v-model" target="_blank" rel="noopener noreferrer">vue/valid-v-model<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>v-model 指令必须合法</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+
+
+// good
+
+</code></pre></div><h2 id="vue-valid-v-on"><a href="#vue-valid-v-on" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/valid-v-on" target="_blank" rel="noopener noreferrer">vue/valid-v-on<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>v-on 指令必须合法</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+
+
+// good
+
+</code></pre></div><h2 id="vue-valid-v-once"><a href="#vue-valid-v-once" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/valid-v-once" target="_blank" rel="noopener noreferrer">vue/valid-v-once<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>v-once 指令必须合法</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+
+
+// good
+
+</code></pre></div><h2 id="vue-valid-v-pre"><a href="#vue-valid-v-pre" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/valid-v-pre" target="_blank" rel="noopener noreferrer">vue/valid-v-pre<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>v-pre 指令必须合法</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+
+
+// good
+
+</code></pre></div><h2 id="vue-valid-v-show"><a href="#vue-valid-v-show" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/valid-v-show" target="_blank" rel="noopener noreferrer">vue/valid-v-show<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>v-show 指令必须合法</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+
+
+// good
+
+</code></pre></div><h2 id="vue-valid-v-text"><a href="#vue-valid-v-text" aria-hidden="true" class="header-anchor">#</a> <a href="https://eslint.org/docs/rules/vue/valid-v-text" target="_blank" rel="noopener noreferrer">vue/valid-v-text<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></h2> <p>v-text 指令必须合法</p> <div class="language-vue extra-class"><pre class="language-vue"><code>// bad
+
+
+// good
+
+</code></pre></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/ncuhome/frontend-guide/edit/master/docs/guide/vue/README.md" target="_blank" rel="noopener noreferrer">Edit on GitHub</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">10/13/2019, 10:43:58 AM</span></div></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/frontend-guide/assets/js/app.945283a3.js" defer></script><script src="/frontend-guide/assets/js/2.553c0fdf.js" defer></script><script src="/frontend-guide/assets/js/12.847f57a4.js" defer></script>
+  </body>
+</html>
