@@ -13,6 +13,10 @@ module.exports = {
     ],
     sidebar: [
       {
+        title: '写在前面',
+        path: '/guide/foreword/'
+      },
+      {
         title: '命名规范',
         path: '/guide/naming/'
       },
@@ -36,7 +40,6 @@ module.exports = {
       //   title: 'Vue 代码风格',
       //   path: '/guide/vue/'
       // },
-      
   ],
     editLinkText: 'Edit on GitHub',
     plugins: ['@vuepress/back-to-top'],
