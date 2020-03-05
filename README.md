@@ -1,6 +1,8 @@
 # NCUHOME Front End Style Guide
 
-Style guide for ncuhomers. Heavily inspired by [Alloy Team Tencent](https://github.com/AlloyTeam/eslint-config-alloy).
+[![Build Status](https://travis-ci.org/ncuhome/frontend-guide.svg?branch=master)](https://travis-ci.org/ncuhome/frontend-guide)
+
+Write clean JavaScript Code, Make the world a better place.
 
 ## Get Started
 
@@ -18,10 +20,8 @@ npm run dev
 
 **Depoly**
 
-  1. run `npm install` locally
-  > Just to ensure that `package-lock.json` is included in `Git repo` which is an essential requirement for `npm ci`
-  2. run `deploy.sh`
-  
+Just push your changes, Travis CI will handle this.
+
 ## Todos
 
 - [x] JavaScript Code Style Guide
@@ -34,4 +34,4 @@ npm run dev
 
 NCUHOME Front End Style Guide is under MIT License
 
-Copyright (c) 2019 NCUHOME
+Copyright (c) 2019-present NCUHOME
