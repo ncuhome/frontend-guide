@@ -4,10 +4,11 @@ sidebarDepth: 2
 
 # GIT 使用规范
 
-> 规范制订背景:
->
->* 家园项目日渐增多，每个项目使用的 Git 开发方式都不一样，给跨项目合作与维护带来了一定程度上的困扰。
->* 统一 Git Flow，提高开发效率，向正式互联网公司的开发模式看齐。
+规范制订背景:
+
+* 家园项目日渐增多，每个项目使用的 Git 开发方式都不一样，给跨项目合作与维护带来了一定程度上的困扰。
+* 统一 Git Flow，提高开发效率，向正式互联网公司的开发模式看齐。
+* 统一且规范的 Commits 信息还有助于配合相关工具自动生成 Changelogs。
 
 ## **分支**
 
@@ -17,19 +18,21 @@ sidebarDepth: 2
 * 不允许直接推送代码到 main 分支，所有新功能与 BUG 修复均从 main 分支 checkout 新分支，完成后提 PR 并合入
 * 确保 main 分支质量，不允许出现 main 分支无法部署的低级问题
 
-### `feature`分支
+### `feature` 分支
 
 * 用于开发新功能，完成后合并回 main 分支
 * 命名以 `feature/[新功能名字]` 为准，不使用任何无意义的单词
     > 示例：feature/login feature/topic-editor
+
 * 一个分支只完成一个功能
 * 合并前确保能正常编译或者部署
 
-### BUG修复分支
+### BUG 修复分支
 
 * 用于修复产品 bug，完成后合并回 main 分支
 * 命名以  `fix/[bug名称]` 为准，不使用任何无意义的单词
     > 示例：fix/topic-editor fix/login-502
+
 * 一个分支可修复多个BUG
 * 合并前确保能正常编译或者部署
 
@@ -49,3 +52,8 @@ sidebarDepth: 2
 * 项目中必须有 `.gitigore`，并屏蔽编辑器自定义配置/编译文件/依赖文件等
 * **不允许**提交无意义的 commit message，如 aaa，bbb 等信息
 * 勤 commit，修复一个 bug，完成部分新功能即 commit 一次，**不要一次提交包含多个功能或者十几个改动等**
+
+## 如何落实
+
+* 规范 Commit 信息，推荐使用 [commitlint](https://github.com/conventional-changelog/commitlint) 工具，配合工作室定制的规则。
+* 使用自动化 Release 工具，简化打 Tag、生成 Release 与 Changelogs 的流程。一般情况下可以使用 [release-it](https://github.com/release-it/release-it)，monorepo 场景下可以使用 [changesets](https://github.com/atlassian/changesets)，配合工作室定制的规则使用。
