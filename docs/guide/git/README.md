@@ -18,13 +18,13 @@ sidebarDepth: 2
 ### `feature`分支
   * 用于开发新功能，完成后合并回 main 分支
   * 命名以 `feature/[新功能名字]` 为准，不使用任何无意义的单词
-    > 示例：feature/login feature/topic-editor)
+    > 示例：feature/login feature/topic-editor
   * 一个分支只完成一个功能
   * 合并前确保能正常编译或者部署
 ### BUG修复分支
   * 用于修复产品bug，完成后合并回 main 分支
   * 命名以  `fix/[bug名称]` 为准，不使用任何无意义的单词
-    > 示例：fix/topic-editor fix/login-502)
+    > 示例：fix/topic-editor fix/login-502
   * 一个分支可修复多个BUG
   * 合并前确保能正常编译或者部署
 
