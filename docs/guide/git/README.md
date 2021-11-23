@@ -14,15 +14,15 @@ sidebarDepth: 2
 ### `main`分支（原 master 分支）
   * 代码主分支
   * 不允许直接推送代码到 main 分支，所有新功能与BUG修复均从 main 分支 checkout 新分支，完成后提 PR 并合入
-  * 确保 main 分支质量，不允许出现master分支无法部署的低级问题
+  * 确保 main 分支质量，不允许出现 main 分支无法部署的低级问题
 ### `feature`分支
-  * 用于开发新功能，完成后合并回master分支
+  * 用于开发新功能，完成后合并回 main 分支
   * 命名以 `feature/[新功能名字]` 为准，不使用任何无意义的单词
     > 示例：feature/login feature/topic-editor)
   * 一个分支只完成一个功能
   * 合并前确保能正常编译或者部署
 ### BUG修复分支
-  * 用于修复产品bug，完成后合并回master分支
+  * 用于修复产品bug，完成后合并回 main 分支
   * 命名以  `fix/[bug名称]` 为准，不使用任何无意义的单词
     > 示例：fix/topic-editor fix/login-502)
   * 一个分支可修复多个BUG
