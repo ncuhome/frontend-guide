@@ -36,6 +36,20 @@ sidebarDepth: 2
 * 一个分支可修复多个BUG
 * 合并前确保能正常编译或者部署
 
+## `commit` 信息
+完整的 commit 信息包含头部信息及提交信息，其中头部信息为必填，在必要时（有较大的变动或其它需要备注的信息）选填提交信息。
+头部信息需要包含两个部分``<type>: <description>``
+
+* `type` 可以选用 `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
+  * feat: 新功能(feature)
+  * fix: 修复Bug
+  * docs: 文档
+  * style: 格式化代码(在不影响代码功能的前提)
+  * refactor: 重构代码
+  * test: 添加测试用例
+  * chore: 构建过程或者辅助工具变动
+* `description` 可以是任何文字，但不能包含空格
+
 ## 文档
 
 * 项目文档统一放置于 docs 文件夹
@@ -57,3 +71,4 @@ sidebarDepth: 2
 
 * 规范 Commit 信息，推荐使用 [commitlint](https://github.com/conventional-changelog/commitlint) 工具，配合工作室定制的规则。
 * 使用自动化 Release 工具，简化打 Tag、生成 Release 与 Changelogs 的流程。一般情况下可以使用 [release-it](https://github.com/release-it/release-it)，monorepo 场景下可以使用 [changesets](https://github.com/atlassian/changesets)，配合工作室定制的规则使用。
+* 在提交 commit 之前，需要确保工作室已经完成了相关的工作，如果没有完成，需要先完成。
