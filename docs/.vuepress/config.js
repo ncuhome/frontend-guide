@@ -17,6 +17,10 @@ module.exports = {
         path: '/guide/foreword/'
       },
       {
+        title: 'GIT 使用规范',
+        path: '/guide/git/'
+      },
+      {
         title: '命名规范',
         path: '/guide/naming/'
       },
